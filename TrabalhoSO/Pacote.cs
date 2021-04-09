@@ -8,6 +8,6 @@ namespace TrabalhoSO
 {
     public class Pacote
     {
-        List<Produto> produtos = new List<Produto>();
+        public List<Produto> produtos = new List<Produto>();
     }
 }

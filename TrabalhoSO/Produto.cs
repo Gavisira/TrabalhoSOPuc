@@ -8,6 +8,6 @@ namespace TrabalhoSO
 {
     public class Produto
     {
-        public double volume;
+        public int volume = 250;
     }
 }

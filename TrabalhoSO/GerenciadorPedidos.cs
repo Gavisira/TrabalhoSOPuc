@@ -16,16 +16,26 @@ namespace TrabalhoSO
         {
             CriarListaPedidos(path);
             OrdenaPorPrioridade(this.pedidos);
+            IniciarProcesso();
+        }
+
+
+        private void IniciarProcesso()
+        {
+            foreach (Pedido pedido in pedidos)
+            {
+                pedido.Realizar();
+            }
         }
 
 
         #region Criar Lista ordenada de Pedidos
         private void OrdenaPorPrioridade(List<Pedido> pedidos)
         {
-            this.pedidos = pedidos.OrderBy(x => x.prazoPrioridade).ToList();
+            this.pedidos = pedidos.OrderBy(x => x.prazoPrioridade).ThenBy(x => (x.qtdProdutos % 20)).ThenBy(x => x.qtdProdutos).ToList();
         }
 
-        
+
         private void CriarListaPedidos(string path)
         {
             if (File.Exists(path))
@@ -41,7 +51,7 @@ namespace TrabalhoSO
                         qtdPedidos = Int32.Parse(sr.ReadLine());
                         pedidos = new List<Pedido>(qtdPedidos);
 
-                        string [] splitter = new string [3];
+                        string[] splitter = new string[3];
 
                         while ((linha = sr.ReadLine()) != null)
                         {
@@ -50,7 +60,7 @@ namespace TrabalhoSO
                             {
                                 pedidos.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.MaxValue));
                             }
-                           else pedidos.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.Parse(splitter[2])));
+                            else pedidos.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.Parse(splitter[2])));
                         }
                     }
                 }
