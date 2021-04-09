@@ -9,13 +9,12 @@ namespace TrabalhoSO
     public class Esteira
     {
         public int realizado=0;
-        public int capacidade = 5000;
         public int produtoPorPacote;
         public List<Produto> pacote;
 
         public Esteira ()
         {
-            produtoPorPacote = capacidade/new Produto().volume;
+            produtoPorPacote = 20;
             pacote = new List<Produto>(produtoPorPacote);
         }
 

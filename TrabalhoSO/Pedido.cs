@@ -24,11 +24,15 @@ namespace TrabalhoSO
 
         public void Realizar()
         {
+            Console.WriteLine("Total de produtos: " + qtdProdutos);
+            int count = 0;
             Esteira esteira = new Esteira();
             while (esteira.realizado < qtdProdutos)
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
                 pacotes.Add(esteira.Empacotar(qtdProdutos));
+                Console.WriteLine("Pacote " + count);
+                count++;
             }
         }
     }

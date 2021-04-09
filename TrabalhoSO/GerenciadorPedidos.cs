@@ -17,14 +17,19 @@ namespace TrabalhoSO
             CriarListaPedidos(path);
             OrdenaPorPrioridade(this.pedidos);
             IniciarProcesso();
+            Console.ReadLine();
         }
 
 
         private void IniciarProcesso()
         {
+            int numero = 1;
             foreach (Pedido pedido in pedidos)
             {
+                Console.WriteLine("Pedido numero " + numero);
+                Console.WriteLine("Prazo do pedido " + pedido.prazoPrioridade);
                 pedido.Realizar();
+                numero++;
             }
         }
 
@@ -32,7 +37,7 @@ namespace TrabalhoSO
         #region Criar Lista ordenada de Pedidos
         private void OrdenaPorPrioridade(List<Pedido> pedidos)
         {
-            this.pedidos = pedidos.OrderBy(x => x.prazoPrioridade).ThenBy(x => (x.qtdProdutos % 20)).ThenBy(x => x.qtdProdutos).ToList();
+            this.pedidos = pedidos.OrderBy(x => x.prazoPrioridade).ThenBy(x => x.qtdProdutos).ToList();
         }
 
 
