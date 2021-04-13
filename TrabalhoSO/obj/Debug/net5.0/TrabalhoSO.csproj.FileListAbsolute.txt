@@ -1,0 +1,16 @@
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\TrabalhoSO.exe
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\TrabalhoSO.deps.json
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\TrabalhoSO.runtimeconfig.json
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\TrabalhoSO.runtimeconfig.dev.json
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\TrabalhoSO.dll
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\ref\TrabalhoSO.dll
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\bin\Debug\net5.0\TrabalhoSO.pdb
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.csprojAssemblyReference.cache
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.AssemblyInfoInputs.cache
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.AssemblyInfo.cs
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.csproj.CoreCompileInputs.cache
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.dll
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\ref\TrabalhoSO.dll
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.pdb
+C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\obj\Debug\net5.0\TrabalhoSO.genruntimeconfig.cache

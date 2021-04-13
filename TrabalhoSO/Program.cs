@@ -12,9 +12,9 @@ namespace TrabalhoSO
     -Cada esteira é um conjunto "esteira-braço", então não faz diferença se ele aguenta ou não​
     */
 
-   public class Program
+    class Program
     {
-       public static void Main(string[] args)
+        static void Main(string[] args)
         {
             GerenciadorPedidos gerenciador = new GerenciadorPedidos(@"C:\Users\gabri\source\repos\TrabalhoSO\TrabalhoSO\Empacotadeira.txt");
             Console.Read();
