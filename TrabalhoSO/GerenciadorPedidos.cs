@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TrabalhoSO
 {
-    class GerenciadorPedidos
+   public class GerenciadorPedidos
     {
         public int qtdPedidos;
         public List<Pedido> pedidos;
