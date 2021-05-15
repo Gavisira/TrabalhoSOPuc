@@ -12,10 +12,12 @@ namespace TrabalhoSO
         public string cliente;
         public int qtdProdutos;
         public int prazoPrioridade;
+        public double tempoEntrada;
         public List<Pacote> pacotes = new List<Pacote>();
 
-        public Pedido(string nome, int produtos, int prazo)
+        public Pedido(string nome, int produtos, int prazo, double tempoEntrada)
         {
+            this.tempoEntrada = tempoEntrada;
             this.cliente = nome;
             this.qtdProdutos = produtos;
             this.prazoPrioridade = prazo;
@@ -27,9 +29,8 @@ namespace TrabalhoSO
             Console.WriteLine("Total de produtos: " + qtdProdutos);
             int count = 0;
             Esteira esteira = new Esteira();
-            while (esteira.realizado < qtdProdutos)
+            while (esteira.realizado < qtdProdutos) // roda até alcançar a quantidade de produtos do pacote
             {
-                Thread.Sleep(1000);
                 pacotes.Add(esteira.Empacotar(qtdProdutos));
                 Console.WriteLine("Pacote " + count);
                 count++;

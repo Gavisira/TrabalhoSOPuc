@@ -9,13 +9,18 @@ namespace TrabalhoSO
 {
     class GerenciadorPedidos
     {
+        public static double tempoExecucao = 0.0; //Contabiliza tempo de execução 
         public int qtdPedidos;
         public List<Pedido> pedidos;
+        public List<Pedido> insercao; //Lista para definição de tempo de entrada
 
         public GerenciadorPedidos(string path)
         {
-            CriarListaPedidos(path);
-            OrdenaPorPrioridade(this.pedidos);
+
+            CriarListaTempoExecucao(path);
+            OrdenarTempoEntrada();
+            VerificaTempo();
+            OrdenaPorPrioridade();
             IniciarProcesso();
             Console.ReadLine();
         }
@@ -23,25 +28,43 @@ namespace TrabalhoSO
 
         private void IniciarProcesso()
         {
-            int numero = 1;
-            foreach (Pedido pedido in pedidos)
-            {
-                Console.WriteLine("Pedido numero " + numero);
-                Console.WriteLine("Prazo do pedido " + pedido.prazoPrioridade);
-                pedido.Realizar();
-                numero++;
+           while(pedidos.Count>0){
+               pedidos(0).Realizar(); // realiza o empacotamento do pedido na primeira posição
+               pedidos(0).Remove(); // retira o pedido realizado da lista de pedidos
+               OrdenaPorPrioridade();
+           }
+        }
+
+        private void OrdenarTempoEntrada()
+        {
+            insercao = insercao.OrderBy(x => x.tempoEntrada).ToList();
+        }
+
+        #region Criar Lista de prioridade de Pedidos
+        public void OrdenaPorPrioridade()
+        {
+            pedidos = pedidos.OrderBy(x => x.prazoPrioridade).ThenBy(x => x.qtdProdutos).ToList();
+        }
+
+        public void VerificaTempo()
+        {
+            if (insercao.tempoEntrada == tempoExecucao)
+            { // testa se está no momento do pedido entrar na lista
+                foreach (Pedido pedido in insercao) // roda inserindo dentro da lista todos os pedidos que chegaram no tempo de execução atual
+                {
+                    if (pedido.tempoEntrada != tempoExecucao) // se o tempo  de entrada do pedido atual da lista for diferente do tempo de execução atual, para as inserções
+                    { 
+                        break;
+                    }
+                    pedidos.Add(pedido); // insere o pedido que estava na lista de inserção dentro da lista de pedidos a executar
+                    insercao.Remove(pedido); // remove o pedido da lista de inserção
+                }
+                OrdenaPorPrioridade(); // ordena a lista de pedidos a cada vez que pelo menos 1 pedido entra
             }
         }
 
 
-        #region Criar Lista ordenada de Pedidos
-        private void OrdenaPorPrioridade(List<Pedido> pedidos)
-        {
-            this.pedidos = pedidos.OrderBy(x => x.prazoPrioridade).ThenBy(x => x.qtdProdutos).ToList();
-        }
-
-
-        private void CriarListaPedidos(string path)
+        private void CriarListaTempoExecucao(string path)
         {
             if (File.Exists(path))
             {
@@ -54,18 +77,18 @@ namespace TrabalhoSO
 
 
                         qtdPedidos = Int32.Parse(sr.ReadLine());
-                        pedidos = new List<Pedido>(qtdPedidos);
+                        insercao = new List<Pedido>(qtdPedidos);
 
-                        string[] splitter = new string[3];
+                        string[] splitter = new string[4];
 
                         while ((linha = sr.ReadLine()) != null)
                         {
                             splitter = linha.Split(";");
                             if (Int32.Parse(splitter[2]) == 0)
                             {
-                                pedidos.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.MaxValue));
+                                insercao.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.MaxValue, Double.Parse(splitter[3])));
                             }
-                            else pedidos.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.Parse(splitter[2])));
+                            else insercao.Add(new Pedido(splitter[0], Int32.Parse(splitter[1]), Int32.Parse(splitter[2]), Double.Parse(splitter[3])));
                         }
                     }
                 }

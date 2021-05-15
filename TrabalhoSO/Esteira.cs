@@ -20,16 +20,20 @@ namespace TrabalhoSO
 
         public Pacote Empacotar(int qtdProdutos){
             Pacote novo = new Pacote();
-            for(int i = 0;i<produtoPorPacote;i++){
+            GerenciadorPedidos.tempoExecucao += 0.5; // tempo de transição entre pacotes na esteira = 0.5s
+            GerenciadorPedidos.VerificaTempo(); // verifica o tempo atual, para verificar se há pedidos a serem inseridos na lista naquele tempo de execução
+            for(int i = 0;i<produtoPorPacote;i++){ // roda até que todos os produtos estejam empacotados
                 if(realizado<qtdProdutos){
                     novo.produtos.Add(new Produto());
                     realizado++;
                 }
-            
-           
             }
+            for(int i = 0;i<10;i++){  // roda verificando se houve entrada de novos pedidos durante a exeucação do pedido atual
+                GerenciadorPedidos.tempoExecucao += 0.5; // adiciona 0.5s, pra que sempre haja a verificação
+                GerenciadorPedidos.VerificaTempo();
+            }
+            
             return novo;
         }
-
     }
 }
